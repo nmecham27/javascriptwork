@@ -38,4 +38,25 @@ function fibBuilder(n)
         div.appendChild(p);
         
     }
+
+    return{'value': value, 'html': div};
 }
+
+var fib = function(n, node)
+{
+    var tree = fibBuilder(n);
+    node.appendChild(tree.html);
+    node.setAttribute("id", "fib");
+};
+
+
+(function(color, id){
+    var div = document.createElement('div');
+    div.setAttribute('class', color + "shadowed stuff-box");
+    div.setAttribute('id', id);
+    document.body.appendChild(div);
+}('red','fib'));
+
+
+fib(11, document.querySelector('.red'));
+
