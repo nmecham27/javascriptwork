@@ -1,0 +1,41 @@
+function fibBuilder(n)
+{
+    var value;
+    var div = document.createElement('div');
+    div.setAttribute("class", "fib");
+
+
+    if(n<2)
+    {
+        if(n == 0)
+        {
+            value = 0;
+        }
+
+        if(n == 1)
+        {
+            value = 1;
+        }
+
+        var p = document.createElement('p');
+        p.textContent('Fib('+n+') = ' +value);
+        div.appendChild(p);
+    }
+
+    else
+    {
+        var left = fibBuilder(n-1);
+        var clas = left.html.getAttribute("class");
+        left.html.setAttribute("class", clas + "Fib-left");
+
+        var right = fibBuilder(n-2);
+        clas = right.html.getAttribute("class");
+        right.html.setAttribute("class", clas + "Fib-right");
+        value = left.value +right.value;
+
+        var p = document.createElement('p');
+        p.textContent('Fib('+n+') =', +value);
+        div.appendChild(p);
+        
+    }
+}
