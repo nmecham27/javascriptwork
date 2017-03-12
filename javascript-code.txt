@@ -5,42 +5,46 @@ function fibBuilder(n)
     div.setAttribute("class", "fib");
 
 
-    if(n<2)
+    if(n < 2)
     {
-        if(n == 0)
+        if(n === 0)
         {
             value = 0;
         }
 
-        if(n == 1)
+        else if(n === 1)
         {
             value = 1;
         }
 
         var p = document.createElement('p');
-        p.textContent('Fib('+n+') = ' +value);
+        p.textContent = 'Fib(' + n + ') = ' + value;
         div.appendChild(p);
     }
 
     else
     {
-        var left = fibBuilder(n-1);
+        var left = fibBuilder(n - 1);
         var clas = left.html.getAttribute("class");
-        left.html.setAttribute("class", clas + "Fib-left");
+        left.html.setAttribute("class", clas + "fib-left");
 
-        var right = fibBuilder(n-2);
+        var right = fibBuilder(n - 2);
         clas = right.html.getAttribute("class");
-        right.html.setAttribute("class", clas + "Fib-right");
+        right.html.setAttribute("class", clas + "fib-right");
+
         value = left.value +right.value;
 
         var p = document.createElement('p');
-        p.textContent('Fib('+n+') =', +value);
+        p.textContent = 'Fib(' + n + ') = ' + value;
         div.appendChild(p);
-        
+
+        div.appendChild(left.html);
+        div.appendChild(right.html);
+
     }
 
     return{'value': value, 'html': div};
-}
+}   
 
 var fib = function(n, node)
 {
@@ -49,14 +53,12 @@ var fib = function(n, node)
     node.setAttribute("id", "fib");
 };
 
-
 (function(color, id){
     var div = document.createElement('div');
-    div.setAttribute('class', color + "shadowed stuff-box");
+    div.setAttribute('class', color + ' shadowed stuff-box');
     div.setAttribute('id', id);
     document.body.appendChild(div);
 }('red','fib'));
-
 
 fib(11, document.querySelector('.red'));
 
