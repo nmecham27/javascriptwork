@@ -1,3 +1,44 @@
+function titleMaker()
+{
+    document.title = 'sequences';
+}
+
+titleMaker();
+
+function addfibLink()
+{
+    var a = document.createElement('a');
+    var linktext = document.createTextNode("Click here for fib seq");
+    a.appendChild(linktext);
+    a.title = 'Click here for fib seq';
+    a.href = 'https://oeis.org/A000045';
+    document.body.appendChild(a);
+}
+
+function addpellLink()
+{
+    var a = document.createElement('a');
+    var linktext = document.createTextNode("      Click here for pell seq");
+    a.appendChild(linktext);
+    a.title = '      Click here for pell seq';
+    a.href = 'https://oeis.org/A000129';
+    document.body.appendChild(a);
+}
+
+function addtribLink()
+{
+    var a = document.createElement('a');
+    var linktext = document.createTextNode("      Click here for trib seq");
+    a.appendChild(linktext);
+    a.title = '      Click here for trib seq';
+    a.href = 'https://oeis.org/A000073';
+    document.body.appendChild(a);
+}
+
+addfibLink();
+addpellLink();
+addtribLink();
+
 function fibBuilder(n)
 {
     var value;
@@ -280,4 +321,5 @@ yellowDiv();
 trib(11, document.querySelector('.yellow'));
 
 pell(11, document.querySelector('.blue'));
+
 
